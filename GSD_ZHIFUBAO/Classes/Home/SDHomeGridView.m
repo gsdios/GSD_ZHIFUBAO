@@ -61,9 +61,17 @@
 
 #pragma mark - properties
 
+/*
+ *  暂时用scrollview实现，随后用collectionview优化性能
+ */
+
 - (void)setGridModelsArray:(NSArray *)gridModelsArray
 {
     _gridModelsArray = gridModelsArray;
+    
+    [_itemsArray removeAllObjects];
+    [_rowSeparatorsArray removeAllObjects];
+    [_columnSeparatorsArray removeAllObjects];
     
     [gridModelsArray enumerateObjectsUsingBlock:^(SDHomeGridItemModel *model, NSUInteger idx, BOOL *stop) {
         SDHomeGridViewListItemView *item = [[SDHomeGridViewListItemView alloc] init];
@@ -112,6 +120,8 @@
         [self addSubview:columnSeparator];
         [_columnSeparatorsArray addObject:columnSeparator];
     }
+    
+    [self bringSubviewToFront:_cycleScrollADView];
 }
 
 #pragma mark - actions
@@ -215,6 +225,8 @@
         [_itemsArray removeObject:_placeholderButton];
         [_itemsArray insertObject:longPressed.view atIndex:index];
         
+        [self sendSubviewToBack:longPressed.view];
+        
         [UIView animateWithDuration:0.4 animations:^{
             longPressed.view.transform = CGAffineTransformIdentity;
             [self setupSubViewsFrame];
@@ -296,7 +308,6 @@
             CGFloat x = 0;
             CGFloat y = idx * itemH;
             view.frame = CGRectMake(x, y, w, h);
-            [self bringSubviewToFront:view];
         }];
         
         [_columnSeparatorsArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
@@ -305,15 +316,12 @@
             CGFloat x = idx * itemW;
             CGFloat y = 0;
             view.frame = CGRectMake(x, y, w, h);
-            [self bringSubviewToFront:view];
         }];
         _hasAdjustedSeparators = YES;
     }
     
     _cycleScrollADViewBackgroundView.frame = CGRectMake(0, itemH * kHomeGridViewTopSectionRowCount, self.sd_width, itemH);
-    [self bringSubviewToFront:_cycleScrollADViewBackgroundView];
     _cycleScrollADView.frame = CGRectMake(0, _cycleScrollADViewBackgroundView.sd_y + 10, self.sd_width, itemH - 10 * 2);
-    [self bringSubviewToFront:_cycleScrollADView];
 }
 
 #pragma mark - scroll view delegate
