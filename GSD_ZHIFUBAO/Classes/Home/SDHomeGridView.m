@@ -23,7 +23,7 @@
     NSMutableArray *_itemsArray;
     NSMutableArray *_rowSeparatorsArray;
     NSMutableArray *_columnSeparatorsArray;
-    BOOL _hasAdjustedSeparators;
+    BOOL _shouldAdjustedSeparators;
     CGPoint _lastPoint;
     UIButton *_placeholderButton;
 //    BOOL _isMoving;
@@ -42,7 +42,7 @@
         _itemsArray = [NSMutableArray array];
         _rowSeparatorsArray = [NSMutableArray array];
         _columnSeparatorsArray = [NSMutableArray array];
-        _hasAdjustedSeparators = NO;
+        _shouldAdjustedSeparators = NO;
         _placeholderButton = [[UIButton alloc] init];
         
         UIView *cycleScrollADViewBackgroundView = [[UIView alloc] init];
@@ -121,6 +121,9 @@
         [_columnSeparatorsArray addObject:columnSeparator];
     }
     
+    _shouldAdjustedSeparators = YES;
+    
+    [self bringSubviewToFront:_cycleScrollADViewBackgroundView];
     [self bringSubviewToFront:_cycleScrollADView];
 }
 
@@ -298,10 +301,10 @@
     CGFloat itemW = self.sd_width / kHomeGridViewPerRowItemCount;
     CGFloat itemH = itemW * 1.1;
     
+    [self setupSubViewsFrame];
     
-    
-    if (YES) {
-        [self setupSubViewsFrame];
+    if (_shouldAdjustedSeparators) {
+        
         [_rowSeparatorsArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
             CGFloat w = self.sd_width;
             CGFloat h = 0.4;
@@ -317,7 +320,7 @@
             CGFloat y = 0;
             view.frame = CGRectMake(x, y, w, h);
         }];
-        _hasAdjustedSeparators = YES;
+        _shouldAdjustedSeparators = NO;
     }
     
     _cycleScrollADViewBackgroundView.frame = CGRectMake(0, itemH * kHomeGridViewTopSectionRowCount, self.sd_width, itemH);
