@@ -22,10 +22,4 @@
 
 @implementation SDBasicTableViewControllerCell
 
-// 子类须重写此方法
-- (void)setModel:(NSObject *)model
-{
-    // 子类须重写此方法
-}
-
 @end
