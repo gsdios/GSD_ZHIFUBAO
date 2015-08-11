@@ -24,6 +24,7 @@
 #import "SDHomeGridViewListItemView.h"
 #import "UIView+SDExtension.h"
 #import "SDCycleScrollView.h"
+#import "SDGridItemCacheTool.h"
 
 
 #define kHomeGridViewPerRowItemCount 4
@@ -243,6 +244,9 @@
         
         [self sendSubviewToBack:longPressed.view];
         
+        // 保存数据
+        [self saveItemsSettingCache];
+        
         [UIView animateWithDuration:0.4 animations:^{
             longPressed.view.transform = CGAffineTransformIdentity;
             [self setupSubViewsFrame];
@@ -259,9 +263,24 @@
 {
     [_itemsArray removeObject:view];
     [view removeFromSuperview];
+    [self saveItemsSettingCache];
     [UIView animateWithDuration:0.4 animations:^{
         [self setupSubViewsFrame];
     }];
+}
+
+- (void)saveItemsSettingCache
+{
+    NSMutableArray *tempItemsContainer = [NSMutableArray new];
+    [_itemsArray enumerateObjectsUsingBlock:^(SDHomeGridViewListItemView *button, NSUInteger idx, BOOL *stop) {
+        if ([button isKindOfClass:[SDHomeGridViewListItemView class]]) {
+            [tempItemsContainer addObject:@{button.itemModel.title : button.itemModel.imageResString}];
+        }
+    }];
+    [SDGridItemCacheTool saveItemsArray:[tempItemsContainer copy]];
+    if ([self.gridViewDelegate respondsToSelector:@selector(homeGrideViewDidChangeItems:)]) {
+        [self.gridViewDelegate homeGrideViewDidChangeItems:self];
+    }
 }
 
 /*

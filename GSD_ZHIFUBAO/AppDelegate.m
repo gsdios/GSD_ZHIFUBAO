@@ -20,6 +20,7 @@
 
 #import "AppDelegate.h"
 #import "SDFrameTabBarController.h"
+#import "SDGridItemCacheTool.h"
 
 @interface AppDelegate ()
 
@@ -39,6 +40,34 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // 初始化griditems
+    id itemsCache = [SDGridItemCacheTool itemsArray];
+    if (!itemsCache) {
+        
+        // 模拟数据
+        NSArray *itemsArray =  @[@{@"淘宝" : @"i00"}, // title => imageString
+                                 @{@"生活缴费" : @"i01"},
+                                 @{@"教育缴费" : @"i02"},
+                                 @{@"红包" : @"i03"},
+                                 @{@"物流" : @"i04"},
+                                 @{@"信用卡" : @"i05"},
+                                 @{@"转账" : @"i06"},
+                                 @{@"爱心捐款" : @"i07"},
+                                 @{@"彩票" : @"i08"},
+                                 @{@"当面付" : @"i09"},
+                                 @{@"余额宝" : @"i10"},
+                                 @{@"AA付款" : @"i11"},
+                                 @{@"国际汇款" : @"i12"},
+                                 @{@"淘点点" : @"i13"},
+                                 @{@"淘宝电影" : @"i14"},
+                                 @{@"亲密付" : @"i15"},
+                                 @{@"股市行情" : @"i16"},
+                                 @{@"汇率换算" : @"i17"}
+                                 ];
+        
+        [SDGridItemCacheTool saveItemsArray:itemsArray];
+    }
     
     return YES;
 }

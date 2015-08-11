@@ -29,6 +29,7 @@
 
 - (void)homeGrideView:(SDHomeGridView *)gridView selectItemAtIndex:(NSInteger)index;
 - (void)homeGrideViewmoreItemButtonClicked:(SDHomeGridView *)gridView;
+- (void)homeGrideViewDidChangeItems:(SDHomeGridView *)gridView;
 
 @end
 

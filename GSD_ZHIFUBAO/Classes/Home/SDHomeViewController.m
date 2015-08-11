@@ -26,6 +26,7 @@
 #import "SDHomeGridItemModel.h"
 #import "SDScanViewController.h"
 #import "SDAddItemViewController.h"
+#import "SDGridItemCacheTool.h"
 
 #define kHomeHeaderViewHeight 110
 
@@ -46,6 +47,20 @@
     [self setupHeader];
     [self setupMainView];
 }
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    CGFloat tabbarHeight = [[self.tabBarController tabBar] sd_height];
+    
+    CGFloat headerY = 0;
+    headerY = ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) ? 64 : 0;
+    _headerView.frame = CGRectMake(0, headerY, self.view.sd_width, kHomeHeaderViewHeight);
+    
+    _mainView.frame = CGRectMake(0, _headerView.sd_y + kHomeHeaderViewHeight, self.view.sd_width, self.view.sd_height - kHomeHeaderViewHeight - tabbarHeight);
+}
+
+#pragma mark - private actions
 
 - (void)setupHeader
 {
@@ -69,7 +84,6 @@
 
 - (void)scanButtonClicked
 {
-
     SDBasicViewContoller *desVc = [[SDScanViewController alloc] init];
     [self.navigationController pushViewController:desVc animated:YES];
 }
@@ -80,37 +94,10 @@
     mainView.gridViewDelegate = self;
     mainView.showsVerticalScrollIndicator = NO;
     
-    NSArray *titleArray = @[@"淘宝",
-                            @"生活缴费",
-                            @"教育缴费",
-                            @"红包",
-                            @"物流",
-                            @"信用卡",
-                            @"转账",
-                            @"爱心捐款",
-                            @"彩票",
-                            @"当面付",
-                            @"余额宝",
-                            @"AA付款",
-                            @"国际汇款",
-                            @"淘点点",
-                            @"淘宝电影",
-                            @"亲密付",
-                            @"股市行情",
-                            @"汇率换算",
-                            ];
+    [self setupDataArray];
+    mainView.gridModelsArray = _dataArray;
     
-    NSMutableArray *temp = [NSMutableArray array];
-    for (int i = 0; i < 18; i++) {
-        SDHomeGridItemModel *model = [[SDHomeGridItemModel alloc] init];
-        model.destinationClass = [SDBasicViewContoller class];
-        model.imageResString = [NSString stringWithFormat:@"i%02d", i];
-        model.title = titleArray[i];
-        [temp addObject:model];
-    }
-    
-    _dataArray = [temp copy];
-    mainView.gridModelsArray = [temp copy];
+    // 模拟轮播图数据源
     mainView.scrollADImageURLStringsArray = @[@"http://ww3.sinaimg.cn/bmiddle/9d857daagw1er7lgd1bg1j20ci08cdg3.jpg",
                                               @"http://ww4.sinaimg.cn/bmiddle/763cc1a7jw1esr747i13xj20dw09g0tj.jpg",
                                               @"http://ww4.sinaimg.cn/bmiddle/67307b53jw1esr4z8pimxj20c809675d.jpg"];
@@ -118,18 +105,19 @@
     _mainView = mainView;
 }
 
-- (void)viewDidLayoutSubviews
+- (void)setupDataArray
 {
-    [super viewDidLayoutSubviews];
-    CGFloat tabbarHeight = [[self.tabBarController tabBar] sd_height];
-    
-    CGFloat headerY = 0;
-    headerY = ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) ? 64 : 0;
-    _headerView.frame = CGRectMake(0, headerY, self.view.sd_width, kHomeHeaderViewHeight);
-    
-    _mainView.frame = CGRectMake(0, _headerView.sd_y + kHomeHeaderViewHeight, self.view.sd_width, self.view.sd_height - kHomeHeaderViewHeight - tabbarHeight);
+    NSArray *itemsArray = [SDGridItemCacheTool itemsArray];
+    NSMutableArray *temp = [NSMutableArray array];
+    for (NSDictionary *itemDict in itemsArray) {
+        SDHomeGridItemModel *model = [[SDHomeGridItemModel alloc] init];
+        model.destinationClass = [SDBasicViewContoller class];
+        model.imageResString =[itemDict.allValues firstObject];
+        model.title = [itemDict.allKeys firstObject];
+        [temp addObject:model];
+    }
+    _dataArray = [temp copy];
 }
-
 
 #pragma mark - SDHomeGridViewDeleate 
 
@@ -146,6 +134,11 @@
     SDAddItemViewController *addVc = [[SDAddItemViewController alloc] init];
     addVc.title = @"添加更多";
     [self.navigationController pushViewController:addVc animated:YES];
+}
+
+- (void)homeGrideViewDidChangeItems:(SDHomeGridView *)gridView
+{
+    [self setupDataArray];
 }
 
 

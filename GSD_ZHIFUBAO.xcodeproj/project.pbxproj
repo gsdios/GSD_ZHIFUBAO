@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485E948B1B3AC44A00688546 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 485E948A1B3AC44A00688546 /* AppDelegate.m */; };
+		486C14251B79FAF000447104 /* SDGridItemCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 486C14241B79FAF000447104 /* SDGridItemCacheTool.m */; };
 		9904C7561B1F2F3800E2717D /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9904C7461B1F2F3800E2717D /* NSData+SDDataCache.m */; };
 		9904C7571B1F2F3800E2717D /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9904C7491B1F2F3800E2717D /* TAAbstractDotView.m */; };
 		9904C7581B1F2F3800E2717D /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9904C74B1B1F2F3800E2717D /* TAAnimatedDotView.m */; };
@@ -22,7 +24,6 @@
 		990759D61B220CA10042DD52 /* SDYuEBaoTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 990759D51B220CA10042DD52 /* SDYuEBaoTableViewCellModel.m */; };
 		990759DA1B2216DC0042DD52 /* SDYuEBaoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 990759D91B2216DC0042DD52 /* SDYuEBaoTableViewController.m */; };
 		992903591B1EBDBC00290346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 992903581B1EBDBC00290346 /* main.m */; };
-		9929035C1B1EBDBC00290346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9929035B1B1EBDBC00290346 /* AppDelegate.m */; };
 		992903641B1EBDBC00290346 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 992903631B1EBDBC00290346 /* Images.xcassets */; };
 		992903731B1EBDBC00290346 /* GSD_ZHIFUBAOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 992903721B1EBDBC00290346 /* GSD_ZHIFUBAOTests.m */; };
 		992903821B1EBED700290346 /* SDFrameTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992903811B1EBED700290346 /* SDFrameTabBarController.m */; };
@@ -78,6 +79,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		485E94891B3AC44A00688546 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = GSD_ZHIFUBAO/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		485E948A1B3AC44A00688546 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = GSD_ZHIFUBAO/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		486C14231B79FAF000447104 /* SDGridItemCacheTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDGridItemCacheTool.h; sourceTree = "<group>"; };
+		486C14241B79FAF000447104 /* SDGridItemCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDGridItemCacheTool.m; sourceTree = "<group>"; };
 		9904C7451B1F2F3800E2717D /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		9904C7461B1F2F3800E2717D /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		9904C7481B1F2F3800E2717D /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -108,8 +113,6 @@
 		992903531B1EBDBC00290346 /* GSD_ZHIFUBAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSD_ZHIFUBAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		992903571B1EBDBC00290346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		992903581B1EBDBC00290346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9929035A1B1EBDBC00290346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
-		9929035B1B1EBDBC00290346 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		992903631B1EBDBC00290346 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9929036C1B1EBDBC00290346 /* GSD_ZHIFUBAOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSD_ZHIFUBAOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		992903711B1EBDBC00290346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -213,6 +216,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		486C14221B79FA9200447104 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				486C14231B79FAF000447104 /* SDGridItemCacheTool.h */,
+				486C14241B79FAF000447104 /* SDGridItemCacheTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		9904C7441B1F2F3800E2717D /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +388,7 @@
 		9929037D1B1EBE2000290346 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				486C14221B79FA9200447104 /* Tool */,
 				99AFE9CC1B200D800049E73B /* SDBasicTableViewController */,
 				9969DE1D1B1ED5E500723888 /* Lib */,
 				9929038F1B1EC97D00290346 /* Category */,
@@ -397,8 +410,8 @@
 		9929037F1B1EBE2000290346 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				9929035A1B1EBDBC00290346 /* AppDelegate.h */,
-				9929035B1B1EBDBC00290346 /* AppDelegate.m */,
+				485E94891B3AC44A00688546 /* AppDelegate.h */,
+				485E948A1B3AC44A00688546 /* AppDelegate.m */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -814,6 +827,7 @@
 			files = (
 				990759D11B21F0AA0042DD52 /* SDHomeGridViewListItemViewButton.m in Sources */,
 				99AFE9E81B2071E10049E73B /* SDServiceTableViewController.m in Sources */,
+				485E948B1B3AC44A00688546 /* AppDelegate.m in Sources */,
 				9969DE1C1B1ED2E900723888 /* SDHomeGridViewListItemView.m in Sources */,
 				9904C7591B1F2F3800E2717D /* TADotView.m in Sources */,
 				9969DE3C1B1ED60400723888 /* MKAnnotationView+WebCache.m in Sources */,
@@ -829,7 +843,6 @@
 				99AFE9D21B20113E0049E73B /* SDAssetsTableViewController.m in Sources */,
 				9929038E1B1EC79300290346 /* SDHomeViewController.m in Sources */,
 				9904C7571B1F2F3800E2717D /* TAAbstractDotView.m in Sources */,
-				9929035C1B1EBDBC00290346 /* AppDelegate.m in Sources */,
 				9969DE3F1B1ED60400723888 /* SDWebImageCompat.m in Sources */,
 				99AFE9D61B2016D50049E73B /* SDBasicTableViewControllerCell.m in Sources */,
 				992903861B1EBF2000290346 /* SDBasicNavigationController.m in Sources */,
@@ -846,6 +859,7 @@
 				99AFE9DB1B201A480049E73B /* SDAssetsTableViewControllerCell.m in Sources */,
 				99AFE9F11B2073BF0049E73B /* SDServiceTableViewCell.m in Sources */,
 				9904C7581B1F2F3800E2717D /* TAAnimatedDotView.m in Sources */,
+				486C14251B79FAF000447104 /* SDGridItemCacheTool.m in Sources */,
 				9904C75A1B1F2F3800E2717D /* TAPageControl.m in Sources */,
 				992903591B1EBDBC00290346 /* main.m in Sources */,
 				99A732611B241BDC0033E878 /* SDAddItemGridView.m in Sources */,
