@@ -7,15 +7,17 @@
 //
 
 
-/**
+/*
  
- *******************************************************
- *                                                      *
- * 感谢您的支持， 如果下载的代码在使用过程中出现BUG或者其他问题    *
- * 您可以发邮件到gsdios@126.com 或者 到                       *
- * https://github.com/gsdios?tab=repositories 提交问题     *
- *                                                      *
- *******************************************************
+ *********************************************************************************
+ *
+ * 在您使用此自动布局库的过程中如果出现bug请及时以以下任意一种方式联系我们，我们会及时修复bug并
+ * 帮您解决问题。
+ * 新浪微博:GSD_iOS
+ * Email : gsdios@126.com
+ * GitHub: https://github.com/gsdios
+ *
+ *********************************************************************************
  
  */
 
@@ -120,17 +122,17 @@
     
     long rowCount = [self rowCountWithItemsCount:gridModelsArray.count];
     
-        
+    UIColor *lineColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.8];
     for (int i = 0; i < (rowCount + 1); i++) {
         UIView *rowSeparator = [[UIView alloc] init];
-        rowSeparator.backgroundColor = [UIColor lightGrayColor];
+        rowSeparator.backgroundColor = lineColor;
         [self addSubview:rowSeparator];
         [_rowSeparatorsArray addObject:rowSeparator];
     }
     
     for (int i = 0; i < (kHomeGridViewPerRowItemCount + 1); i++) {
         UIView *columnSeparator = [[UIView alloc] init];
-        columnSeparator.backgroundColor = [UIColor lightGrayColor];
+        columnSeparator.backgroundColor = lineColor;
         [self addSubview:columnSeparator];
         [_columnSeparatorsArray addObject:columnSeparator];
     }
